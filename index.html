@@ -2,73 +2,40 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Página Divertida</title>
-  <style>
-    body {
-      background-color: #282a36;
-      color: #f8f8f2;
-      text-align: center;
-      font-family: Arial, sans-serif;
-      margin-top: 5vh;
-    }
-    h1 {
-      color: #ff79c6;
-      animation: piscar 1s infinite alternate;
-    }
-    img {
-      width: 300px;
-      border-radius: 15px;
-      margin-top: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-      /* Começa escondido */
-      display: none; 
-    }
-    .mensagem-sucesso {
-      color: #50fa7b;
-      font-size: 20px;
-      font-weight: bold;
-      margin-top: 20px;
-      /* Começa escondido */
-      display: none;
-    }
-    button {
-      background-color: #50fa7b;
-      border: none;
-      padding: 15px 30px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 8px;
-      display: block;
-      margin: 0 auto;
-    }
-    button:hover {
-      background-color: #8be9fd;
-    }
-    @keyframes piscar {
-      from { opacity: 1; }
-      to { opacity: 0.3; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Divertida do Gato</title>
+  <!-- Esta é uma página HTML divertida com estilo e animação -->
+
+  <!-- Versão 100% corrigida com o endereço completo do SVG 🐱 -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐱</text></svg>">
+
+  <!-- Link para o arquivo de estilos CSS externo -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <h1>Olá, Mundo Divertido! 🎉</h1>
   <p>Este é um mini código com estilo e animação.</p>
   
-  <button onclick="mostrarConteudo()">Clique em Mim</button>
+  <!-- O evento de clique foi movido para o arquivo script.js -->
+  <button id="botaoClique">Clique em Mim</button>
 
   <!-- Elementos que vão aparecer instantaneamente -->
   <p id="textoSucesso" class="mensagem-sucesso">Você clicou no botão! 🚀 O gato apareceu!</p>
   <img id="fotoGato" src="https://static.vecteezy.com/ti/vetor-gratis/t2/23426285-branco-gato-kawaii-acenando-patas-mao-fofa-branco-bichano-gato-desenho-animado-vetor.jpg" alt="Gato Fofo">
 
-  <script>
-    function mostrarConteudo() {
-      // Exibe a imagem do gato na hora
-      document.getElementById('fotoGato').style.display = 'inline-block';
-      
-      // Exibe o texto de sucesso na hora, sem caixas de alerta
-      document.getElementById('textoSucesso').style.display = 'block';
-    }
-  </script>
+    <!-- Nova Seção de Curiosidades -->
+  <div class="secao-curiosidades">
+    <button id="botaoCuriosidade">Me conte uma curiosidade! 🐱</button>
+    <p id="textoCuriosidade"></p>
+  </div>
+
+  <!-- Áudio público de miado de gato -->
+  <!-- Novo link de áudio em formato MP3 direto do GitHub -->
+<audio id="somMiado" src="https://githubusercontent.com"></audio>
+
+
+  <!-- Link para o arquivo de funções JavaScript externo -->
+  <script src="script.js"></script>
 </body>
 </html>

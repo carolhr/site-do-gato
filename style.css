@@ -1,0 +1,117 @@
+
+body {
+  background-color: #282a36;
+  color: #f8f8f2;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-top: 5vh;
+}
+
+h1 {
+  color: #ff79c6;
+  animation: piscar 1s infinite alternate;
+}
+
+img {
+  width: 300px;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  /* Começa escondido */
+  display: none; 
+  /* Indica ao usuário que a imagem é clicável */
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+/* Efeito visual quando a imagem do gatinho for clicada */
+img:active {
+  transform: scale(0.95);
+}
+
+.mensagem-sucesso {
+  color: #50fa7b;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  /* Começa escondido */
+  display: none;
+}
+
+button {
+  background-color: #50fa7b;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+button:hover {
+  background-color: #8be9fd;
+}
+
+@keyframes piscar {
+  from { opacity: 1; }
+  to { opacity: 0.3; }
+}
+
+/* Estilo atualizado para as patinhas brilhantes */
+.patinha-cursor {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #ff79c6; /* Cor rosa neon idêntica ao seu título */
+  border-radius: 50%; /* Transforma em um círculo fofo */
+  pointer-events: none; /* Garante que não bloqueie os cliques */
+  transform: translate(-50%, -50%);
+  animation: sumirPatinha 0.6s forwards ease-out;
+  z-index: 9999;
+  
+  /* Cria os dedinhos da patinha usando sombras decorativas! */
+  box-shadow: 
+    -10px -10px 0 0 #ff79c6, 
+    0px -14px 0 0 #ff79c6, 
+    10px -10px 0 0 #ff79c6;
+}
+
+@keyframes sumirPatinha {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+}
+
+/* Estilo da seção de curiosidades */
+.secao-curiosidades {
+  margin-top: 50px;
+  padding: 20px;
+}
+
+#botaoCuriosidade {
+  background-color: #ff79c6; /* Cor rosa para diferenciar do primeiro botão */
+  color: #282a36;
+  margin-top: 10px;
+}
+
+#botaoCuriosidade:hover {
+  background-color: #bd93f9; /* Roxo ao passar o mouse */
+}
+
+#textoCuriosidade {
+  font-size: 18px;
+  color: #f1fa8c; /* Amarelo pastel para destacar a leitura */
+  margin-top: 20px;
+  font-weight: bold;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
