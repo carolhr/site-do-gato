@@ -31,7 +31,7 @@ botaoClique.addEventListener('click', () => {
 fotoGato.addEventListener('click', () => {
   if (somMiado) {
     somMiado.currentTime = 0; 
-    somMiado.play().catch(e => console.log("Áudio aguardando publicação pública."));
+    somMiado.play().catch(e => console.log("Gatinho_miando.mp3"));
   }
 });
 
