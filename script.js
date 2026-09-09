@@ -63,3 +63,29 @@ document.addEventListener('mousemove', (detalhesMouse) => {
     ultimoElementoTempo = tempoAtual;
   }
 });
+
+// 6. INTEGRAÇÃO COM A API PYTHON (ADMINISTRAÇÃO FELINA)
+const botaoContratar = document.getElementById('botaoContratar');
+const fichaContrato = document.getElementById('fichaContrato');
+
+botaoContratar.addEventListener('click', () => {
+  // O JavaScript faz uma requisição para o script Python rodando na sua máquina
+fetch('http://localhost:5000/api/contratar')
+
+    .then(response => response.json())
+    .then(dados => {
+      // Preenche os dados administrativos calculados pelo Python na tela
+      document.getElementById('contratoCargo').innerText = dados.cargo;
+      document.getElementById('contratoDepto').innerText = dados.departamento;
+      document.getElementById('contratoSalario').innerText = dados.salario;
+      document.getElementById('contratoPlr').innerText = dados.plr;
+      document.getElementById('contratoMeta').innerText = dados.meta_do_mes;
+      
+      // Mostra a ficha de contrato
+      fichaContrato.style.display = 'block';
+    })
+    .catch(erro => {
+      console.error("Erro ao conectar com o Python:", erro);
+      alert("Certifique-se de que o seu script Python (app.py) está rodando no terminal!");
+    });
+});
