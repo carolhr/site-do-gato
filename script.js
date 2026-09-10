@@ -5,8 +5,10 @@ const textoSucesso = document.getElementById('textoSucesso');
 const somMiado = document.getElementById('somMiado');
 const botaoCuriosidade = document.getElementById('botaoCuriosidade');
 const textoCuriosidade = document.getElementById('textoCuriosidade');
+const botaoContratar = document.getElementById('botaoContratar');
+const fichaContrato = document.getElementById('fichaContrato');
 
-// Lista de fatos curiosos sobre gatos
+// Banco de dados de curiosidades
 const curiosidadesGatos = [
   "Os gatos passam cerca de 30% a 50% do dia se limpando e lambendo seus pelos.",
   "O cérebro de um gato é biologicamente mais similar ao de um humano do que ao de um cachorro.",
@@ -15,8 +17,13 @@ const curiosidadesGatos = [
   "As garras das patas dianteiras de um gato são mais afiadas do que as das patas traseiras.",
   "O ronronar dos gatos tem uma frequência que pode ajudar na regeneração de tecidos e ossos.",
   "As impressões digitais dos gatos ficam no focinho! Cada nariz de gato é único no mundo.",
-  "Os gatos têm 32 músculos in cada orelha, o que permite que eles as movam em várias direções."
+  "Os gatos têm 32 músculos em cada orelha, o que permite que eles as movam em várias direções."
 ];
+
+// BANCO DE DADOS ADMINISTRATIVO FELINO (Migrado do Python para rodar online 24/7!)
+const cargos = ["CEO (Chief Executive Meow)", "Diretor de Recursos Humanos (Gatos)", "Gerente de Logística de Sachês", "Analista de Soneca Sênior", "Estagiário de Derrubar Copos"];
+const departamentos = ["Finanças e Petiscos", "Operações de Arranhar Sofás", "Qualidade do Ronronar", "Vendas de Olhares Fofos"];
+const metas = ["Dormir 18 horas hoje", "Derrubar 3 canetas da mesa", "Pedir comida 5 minutos após já ter comido", "Arranhar o tapete novo"];
 
 // Variável para controlar o tempo entre a criação de uma patinha e outra
 let ultimoElementoTempo = 0;
@@ -31,19 +38,39 @@ botaoClique.addEventListener('click', () => {
 fotoGato.addEventListener('click', () => {
   if (somMiado) {
     somMiado.currentTime = 0; 
-    somMiado.play().catch(e => console.log("Gatinho_miando.mp3"));
+    somMiado.play().catch(e => console.log("Áudio aguardando interação ou publicação."));
   }
 });
 
-// 4. FUNÇÃO PARA EXIBIR CURIOSIDADE ALEATÓRIA
+// 4. Função para exibir curiosidade aleatória
 botaoCuriosidade.addEventListener('click', () => {
-  // Sorteia um índice da nossa lista de curiosidades
   const indiceAleatorio = Math.floor(Math.random() * curiosidadesGatos.length);
-  // Exibe o texto sorteado na tela
   textoCuriosidade.innerText = curiosidadesGatos[indiceAleatorio];
 });
 
-// 5. EFEITO DAS PATINHAS SEGUINDO O MOUSE
+// 5. SIMULADOR DE RH FELINO (Processado direto no navegador do usuário)
+botaoContratar.addEventListener('click', () => {
+  // Sorteia de forma aleatória igual o Python fazia
+  const cargoSorteado = cargos[Math.floor(Math.random() * cargos.length)];
+  const deptoSorteado = departamentos[Math.floor(Math.random() * departamentos.length)];
+  const metaSorteada = metas[Math.floor(Math.random() * metas.length)];
+  
+  // Gera um salário aleatório entre 50 e 500 sachês
+  const salarioSaches = Math.floor(Math.random() * (500 - 50 + 1)) + 50;
+  const plrGramas = (salarioSaches * 0.1).toFixed(2);
+
+  // Preenche as informações na tela do usuário instantaneamente
+  document.getElementById('contratoCargo').innerText = cargoSorteado;
+  document.getElementById('contratoDepto').innerText = deptoSorteado;
+  document.getElementById('contratoSalario').innerText = `${salarioSaches} sachês/mês`;
+  document.getElementById('contratoPlr').innerText = `${plrGramas} gramas de catnip`;
+  document.getElementById('contratoMeta').innerText = metaSorteada;
+  
+  // Exibe a ficha na tela
+  fichaContrato.style.display = 'block';
+});
+
+// 6. EFEITO DAS PATINHAS SEGUINDO O MOUSE
 document.addEventListener('mousemove', (detalhesMouse) => {
   const tempoAtual = Date.now();
   
@@ -62,30 +89,4 @@ document.addEventListener('mousemove', (detalhesMouse) => {
     
     ultimoElementoTempo = tempoAtual;
   }
-});
-
-// 6. INTEGRAÇÃO COM A API PYTHON (ADMINISTRAÇÃO FELINA)
-const botaoContratar = document.getElementById('botaoContratar');
-const fichaContrato = document.getElementById('fichaContrato');
-
-botaoContratar.addEventListener('click', () => {
-  // O JavaScript faz uma requisição para o script Python rodando na sua máquina
-fetch('http://localhost:5000/api/contratar')
-
-    .then(response => response.json())
-    .then(dados => {
-      // Preenche os dados administrativos calculados pelo Python na tela
-      document.getElementById('contratoCargo').innerText = dados.cargo;
-      document.getElementById('contratoDepto').innerText = dados.departamento;
-      document.getElementById('contratoSalario').innerText = dados.salario;
-      document.getElementById('contratoPlr').innerText = dados.plr;
-      document.getElementById('contratoMeta').innerText = dados.meta_do_mes;
-      
-      // Mostra a ficha de contrato
-      fichaContrato.style.display = 'block';
-    })
-    .catch(erro => {
-      console.error("Erro ao conectar com o Python:", erro);
-      alert("Certifique-se de que o seu script Python (app.py) está rodando no terminal!");
-    });
 });
